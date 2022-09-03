@@ -14,6 +14,7 @@ int select_op(stack_t **stack, char **token, unsigned int line_number)
 	instruction_t op[] = {
 		{"pall", pall_op},
 		{"pint", pint_op},
+		{"pop", pop_op},
 		{NULL, NULL}
 	};
 
@@ -103,8 +104,30 @@ void pint_op(stack_t **stack, unsigned int line_number)
 	if (!tmp)
 	{
 		print_error(1, line_number);
-		exit(EXIT_FAILURE);	
+		exit(EXIT_FAILURE);
 	}
 
 	printf("%d\n", tmp->n);
+}
+
+/**
+ * pop_op - removes the top element of the stack
+ * @stack: pointer to the stack
+ * @line_number: number of the line
+ * Retunr: void
+ */
+void pop_op(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = *stack;
+
+	if (!tmp)
+	{
+		print_error(2, line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	if (tmp->next)
+		tmp->next->prev = tmp->prev;
+	*stack = tmp->next;
+	free(tmp);
 }

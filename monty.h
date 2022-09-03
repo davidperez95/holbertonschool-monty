@@ -55,6 +55,7 @@ int empty_line(char *line, char *delims);
 int push_op(stack_t **stack, char **token, unsigned int line_number);
 void pall_op(stack_t **stack, unsigned int line_number);
 void pint_op(stack_t **stack, unsigned int line_number);
+void pop_op(stack_t **stack, unsigned int line_number);
 
 /* handle errors */
 int print_error(int flag, unsigned int line_number);

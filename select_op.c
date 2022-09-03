@@ -5,7 +5,7 @@
  *
  *
  */
-void (*get_op)(stack_t **stack, unsigned int line_number)
+void (*get_op(char *opcode))(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
 

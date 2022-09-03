@@ -13,6 +13,7 @@ int select_op(stack_t **stack, char **token, unsigned int line_number)
 
 	instruction_t op[] = {
 		{"pall", pall_op},
+		{"pint", pint_op},
 		{NULL, NULL}
 	};
 
@@ -87,4 +88,23 @@ void pall_op(stack_t **stack, unsigned int line_number)
 		printf("%d\n", tmp->n);
 		tmp = tmp->next;
 	}
+}
+
+/**
+ * pint_op - prints the top value of the stack.
+ * @stack: pointer to the stack
+ * @line_number: number of the line
+ * Return: void
+ */
+void pint_op(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = *stack;
+
+	if (!tmp)
+	{
+		print_error(1, line_number);
+		exit(EXIT_FAILURE);	
+	}
+
+	printf("%d\n", tmp->n);
 }

@@ -9,10 +9,32 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+typedef struct stack_s
+{
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
+} stack_t;
+
+typedef struct instruction_s
+{
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
+} instruction_t;
+
 #define DELIM_LINE " \n\t\a"
 
 char **tokenizer(char *line, char *delim);
 void *_calloc(unsigned int nmemb, unsigned int size);
+
+/* monty operations */
+int push_op(stack_t **stack, char **token, size_t line_number);
+
+/* handle errors */
+int print_error(int flag, size_t line_number);
+
+/* frees */
 void free_token(char **token);
+void free_stack(stack_t **stack);
 
 #endif

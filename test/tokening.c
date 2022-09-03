@@ -64,16 +64,3 @@ char **tokenizer(char *line, char *delim)
 	free(copy_line), argv[i] = NULL;
 	return (argv);
 }
-
-void free_token(char **token)
-{
-	int i;
-
-	for (i = 0; token[i] != NULL; i++)
-	{
-		free(token[i]);
-		token[i] = NULL;
-	}
-
-	free(token);
-}

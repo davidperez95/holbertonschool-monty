@@ -11,7 +11,7 @@
 #include <fcntl.h>
 
 /* macros */
-#define DELIM_LINE " \n\t\a"
+#define DELIM_LINE " \n\t\a\r"
 
 /* typedef and structures */
 
@@ -49,6 +49,7 @@ typedef struct instruction_s
 char **tokenizer(char *line, char *delim);
 void *_calloc(unsigned int nmemb, unsigned int size);
 int select_op(stack_t **stack, char **token, unsigned int line_number);
+int empty_line(char *line, char *delims);
 
 /* monty operations */
 int push_op(stack_t **stack, char **token, unsigned int line_number);
@@ -56,6 +57,7 @@ void pall_op(stack_t **stack, unsigned int line_number);
 
 /* handle errors */
 int print_error(int flag, unsigned int line_number);
+int open_error(char *filename);
 
 /* frees */
 void free_token(char **token);

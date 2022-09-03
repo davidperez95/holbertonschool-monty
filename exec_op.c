@@ -16,7 +16,7 @@ int select_op(stack_t **stack, char **token, unsigned int line_number)
 		{NULL, NULL}
 	};
 
-	for (i = 0; i < 2; i++)
+	for (i = 0; op[i].opcode != NULL; i++)
 	{
 		if (strcmp(op[i].opcode, token[0]) == 0)
 		{
@@ -38,16 +38,23 @@ int select_op(stack_t **stack, char **token, unsigned int line_number)
  */
 int push_op(stack_t **stack, char **token, unsigned int line_number)
 {
+	int i = 0;
 	stack_t *new = NULL;
 
 	if (token[1] == NULL)
 		return (print_error(0, line_number));
 
-	if (token[1][0] < '0' || token[1][0] > '9')
+	for (i = 0; token[1][i] != '\0'; i++)
 	{
-		free_stack(stack);
-		return (print_error(0, line_number));
+		if (token[1][i] == '-' && i == 0)
+			continue;
+		if (token[1][i] < '0' || token[1][i] > '9')
+		{
+			free_stack(stack);
+			return (print_error(0, line_number));
+		}
 	}
+
 	new = malloc(sizeof(stack_t));
 	if (!new)
 	{
@@ -60,8 +67,6 @@ int push_op(stack_t **stack, char **token, unsigned int line_number)
 	new->next = *stack;
 	new->prev = NULL;
 	*stack = new;
-
-	printf("number in stack: %d\n", new->n);
 
 	return (EXIT_SUCCESS);
 }

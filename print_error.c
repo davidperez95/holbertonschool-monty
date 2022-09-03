@@ -13,3 +13,14 @@ int print_error(int flag, unsigned int line_number)
 	fprintf(stderr, "L%d: %s\n", line_number, errors[flag]);
 	return (EXIT_FAILURE);
 }
+
+/**
+ * open_error - prints error if cant open file
+ * @filename: name of the file
+ * Return: EXIT_FAILURE
+ */
+int open_error(char *filename)
+{
+	fprintf(stderr, "Error: Can't open file %s\n", filename);
+	return (EXIT_FAILURE);
+}

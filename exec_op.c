@@ -1,5 +1,12 @@
 #include "monty.h"
 
+/**
+ * select_op - selects monty operation
+ * @stack: pointer to stack
+ * @token: array of strings
+ * @line_number: line number
+ * Return: EXIT_SUCCESS
+ */
 int select_op(stack_t **stack, char **token, unsigned int line_number)
 {
 	int i = 0;
@@ -19,16 +26,23 @@ int select_op(stack_t **stack, char **token, unsigned int line_number)
 	}
 	free_stack(stack);
 	fprintf(stderr, "L%i: unknown instruction %s\n", line_number, token[0]);
-	return (EXIT_FAILURE);	
+	return (EXIT_FAILURE);
 }
 
+/**
+ * push_op - adds an integer at the top of the stack
+ * @stack: pointer to stack
+ * @token: array of strings
+ * @line_number: line number
+ * Return: EXIT_SUCCESS
+ */
 int push_op(stack_t **stack, char **token, unsigned int line_number)
 {
 	stack_t *new = NULL;
 
 	if (token[1] == NULL)
 		return (print_error(0, line_number));
-		
+
 	if (token[1][0] < '0' || token[1][0] > '9')
 	{
 		free_stack(stack);
@@ -52,6 +66,12 @@ int push_op(stack_t **stack, char **token, unsigned int line_number)
 	return (EXIT_SUCCESS);
 }
 
+/**
+ * pall_op - prints the stack
+ * @stack: pointer to the stack
+ * @line_number: number of the line
+ * Return: void
+ */
 void pall_op(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;

@@ -1,5 +1,11 @@
 #include "monty.h"
 
+/**
+ * _calloc - asing memory of nmemb elements
+ * @nmemb: number of elements
+ * @size: size of the memory
+ * Return: void
+ */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	char *array  = NULL;
@@ -22,6 +28,12 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	return (array);
 }
 
+/**
+ * tokenizer - tokenizes a string
+ * @line: string to token
+ * @delim: delimites to token
+ * Return: double pointer
+ */
 char **tokenizer(char *line, char *delim)
 {
 	char *token = NULL, *copy_line = NULL;

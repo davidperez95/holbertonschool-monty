@@ -6,7 +6,7 @@ int main(int ac, char **av)
 	stack_t *stack = NULL;
 	char *line = NULL, **token = NULL;
 	size_t len = 0;
-	unsigned int line_number = 0, status = 0, i = 0;
+	unsigned int line_number = 0, status = 0;
 
 	if (ac != 2)
 	{
@@ -28,10 +28,6 @@ int main(int ac, char **av)
 			free(line);
 			free(token);
 			continue;
-		}
-		for (i = 0; token[i] != NULL; i++)
-		{
-			printf("%s\n", token[i]);
 		}
 
 		if (strcmp(token[0], "push") == 0)

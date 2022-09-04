@@ -37,7 +37,7 @@ int main(int ac, char **av)
 		}
 		if (strcmp(token[0], "nop") == 0)
 		{
-			free(token);
+			free_token(token);
 			continue;
 		}
 		if (strcmp(token[0], "push") == 0)

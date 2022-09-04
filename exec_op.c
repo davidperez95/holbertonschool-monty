@@ -16,7 +16,7 @@ int select_op(stack_t **stack, char **token, unsigned int line_number)
 		{"pint", pint_op},
 		{"pop", pop_op},
 		{"swap", swap_op},
-		//{"add", add_op},
+		{"add", add_op},
 		{NULL, NULL}
 	};
 

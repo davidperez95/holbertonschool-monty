@@ -26,9 +26,17 @@ void swap_op(stack_t **stack, unsigned int line_number)
  * @stack; pointer to the stack
  * @line_number: number of the line
  * Return: void
- 
+ */
 void add_op(stack_t **stack, unsigned int line_number)
 {
-	
+	int tmp;
+
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		print_error(4, line_number);
+		exit(EXIT_FAILURE);
+	}
+	tmp = (*stack)->n + (*stack)->next->n;
+	(*stack)->next->n = tmp;
+	pop_op(stack, line_number);
 }
-*/

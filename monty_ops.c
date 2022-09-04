@@ -20,3 +20,15 @@ void swap_op(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n = (*stack)->n;
 	(*stack)->n = tmp;
 }
+
+/**
+ * add_op - adds the two top elements of the stack
+ * @stack; pointer to the stack
+ * @line_number: number of the line
+ * Return: void
+ 
+void add_op(stack_t **stack, unsigned int line_number)
+{
+	
+}
+*/

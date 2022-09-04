@@ -35,7 +35,11 @@ int main(int ac, char **av)
 			free(token);
 			continue;
 		}
-
+		if (strcmp(token[0], "nop") == 0)
+		{
+			free(token);
+			continue;
+		}
 		if (strcmp(token[0], "push") == 0)
 			status = push_op(&stack, token, line_number);
 		else

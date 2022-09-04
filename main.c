@@ -35,7 +35,7 @@ int main(int ac, char **av)
 			free(token);
 			continue;
 		}
-		if (strcmp(token[0], "nop") == 0)
+		if (token[0][0] == '#' || strcmp(token[0], "nop") == 0)
 		{
 			free_token(token);
 			continue;
